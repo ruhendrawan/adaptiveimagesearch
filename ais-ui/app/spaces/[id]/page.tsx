@@ -3,10 +3,12 @@
 import { Button } from "@nextui-org/button";
 import { Chip } from "@nextui-org/react";
 import Carusel from "@/components/carousel";
+import Link from "next/link";
 
 export default function SpacePage() {
 	return (
 		<div className="flex flex-col gap-8 items-start">
+			<Link href="/spaces"><Button>Back to Spaces</Button></Link>
 			<h1 className="text-2xl font-bold">Space name</h1>
 
 			<div className="flex items-center gap-2 -mt-4">

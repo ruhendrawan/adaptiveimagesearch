@@ -24,3 +24,7 @@ export default function SpacesPage() {
 		</div>
 	);
 }
+
+// TODO: { "category1": [ { "title": "...", "url": "..." }, ... ], ... }
+// TODO: add a link back to spaces "back to spaces"
+// TODO: add a link to go the space "view space"
