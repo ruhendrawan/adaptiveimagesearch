@@ -1,0 +1,66 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider          = "mysql"
+  url               = env("DATABASE_URL")
+  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
+}
+
+model Space {
+  id          Int           @id @default(autoincrement())
+  name        String
+  slug        String        @unique
+  session_id  String
+  created_at  DateTime      @default(now())
+  updated_at  DateTime      @updatedAt
+  SpaceSearch SpaceSearch[]
+
+  @@map("spaces")
+}
+
+model SpaceSearch {
+  id             Int      @id @default(autoincrement())
+  space_id       Int // Foreign key linking to Space model
+  search_keyword String   @db.VarChar(255)
+  llm_model      String?  @db.VarChar(255)
+  llm_params     String?  @db.Text
+  llm_prompt     String?  @db.Text
+  llm_response   String?  @db.Text
+  llm_keywords   String?  @db.Text
+  created_at     DateTime @default(now())
+  updated_at     DateTime @updatedAt
+
+  space Space @relation(fields: [space_id], references: [id])
+
+  @@map("space_searches")
+}
+
+model Session {
+  id         String    @id @db.VarChar(255)
+  user_id    BigInt?   @db.UnsignedBigInt
+  ip_address String?   @db.VarChar(45)
+  user_agent String?   @db.Text
+  payload    String    @db.LongText
+  created_at DateTime? @default(now())
+  updated_at DateTime  @updatedAt
+
+  @@map("sessions")
+}
+
+model EventLog {
+  id         Int       @id @default(autoincrement())
+  session_id String?
+  module     String?   @db.VarChar(100)
+  event_data String?   @db.Text
+  created_at DateTime? @default(now())
+
+  @@map("event_logs")
+}
