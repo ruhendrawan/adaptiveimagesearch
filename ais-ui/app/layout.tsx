@@ -54,7 +54,7 @@ export default function RootLayout(props: LayoutProps | LayoutPropsExtended) {
 						<main className="container mx-auto max-w-7xl p-10 flex-grow">
 							{children}
 						</main>
-						{modal}
+						{/* {modal} */}
 						{/* <footer className="w-full flex items-center justify-center py-3">
 						<Link
 							isExternal

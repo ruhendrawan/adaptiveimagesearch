@@ -12,6 +12,8 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
 
+import PageModal from '@/components/page-modal';
+
 import { Input } from "@/components/ui/input"
 // import { Button } from "@/components/ui/button"
 import {
@@ -56,9 +58,9 @@ export default function NewSpaceForm() {
 			router.back();
 			const newSpace = await createSpace(values.spaceName)
 			if (newSpace && newSpace.slug) {
-				// router.push(`/space/${newSpace.slug}/search`,
-				// 	{ forceOptimisticNavigation: true })
-				// Router.reload();
+			// 	// router.push(`/space/${newSpace.slug}/search`,
+			// 	// 	{ forceOptimisticNavigation: true })
+			// 	// Router.reload();
 				router.replace(`/space/${newSpace.slug}/search`)
 				router.refresh()
 			}
@@ -78,32 +80,34 @@ export default function NewSpaceForm() {
 
 	return (
 		<>
-			<Form {...form}>
-				<form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-					<FormField
-						control={form.control}
-						name="spaceName"
-						render={({ field }) => (
-							<FormItem>
-								<FormControl>
-									<Input
-										autoFocus={true}
-										autoComplete="off"
-										placeholder="Type in the space name"
-										{...field}
-										ref={(e) => {
-											field.ref(e);
-											inputEl.current = e;
-										}}
-									/>
-								</FormControl>
-								<FormMessage />
-							</FormItem>
-						)}
-					/>
-					<Button color="primary" type="submit" disabled={isLoading}>{isLoading ? 'Loading...' : 'Submit'}</Button>
-				</form>
-			</Form>
+		    <PageModal header="New Space">
+				<Form {...form}>
+					<form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+						<FormField
+							control={form.control}
+							name="spaceName"
+							render={({ field }) => (
+								<FormItem>
+									<FormControl>
+										<Input
+											autoFocus={true}
+											autoComplete="off"
+											placeholder="Type in the space name"
+											{...field}
+											ref={(e) => {
+												field.ref(e);
+												inputEl.current = e;
+											}}
+										/>
+									</FormControl>
+									<FormMessage />
+								</FormItem>
+							)}
+						/>
+						<Button color="primary" type="submit" disabled={isLoading}>{isLoading ? 'Loading...' : 'Submit'}</Button>
+					</form>
+				</Form>
+			</PageModal>
 		</>
 	);
 }
