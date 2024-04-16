@@ -1,6 +1,7 @@
 "use client"
 
 import React, { useState, useEffect } from 'react';
+// import { revalidatePath } from 'next/cache';
 import Carousel from './carousel';
 
 export default function CarouselGroup({ topics }: { topics: string[] }) {
@@ -40,7 +41,12 @@ export default function CarouselGroup({ topics }: { topics: string[] }) {
         });
     }, [topics]); // Re-run the effect if topics change
 
-    if (Object.keys(keywordImages).length === 0) return <div>Loading...</div>;
+    if (Object.keys(keywordImages).length === 0) {
+        return <div>Loading...</div>;
+    // } else {
+    // server action only
+    //     revalidatePath(`/space/${newSpace.slug}/search`);
+    }
     console.log(Object.keys(keywordImages).length)
 
     return (

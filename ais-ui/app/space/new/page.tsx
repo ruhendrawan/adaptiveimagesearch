@@ -4,7 +4,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Button } from "@nextui-org/button";
 // import { Input } from "@nextui-org/input";
 import { useRouter } from 'next/navigation';
-// import Router from 'next/router';
+import Router from 'next/router';
 
 import { createSpace } from './actions';
 
@@ -55,14 +55,14 @@ export default function NewSpaceForm() {
 		// event.preventDefault()
 		setIsLoading(true)
 		try {
-			router.back();
+			// router.back();
 			const newSpace = await createSpace(values.spaceName)
 			if (newSpace && newSpace.slug) {
-			// 	// router.push(`/space/${newSpace.slug}/search`,
-			// 	// 	{ forceOptimisticNavigation: true })
-			// 	// Router.reload();
-				router.replace(`/space/${newSpace.slug}/search`)
-				router.refresh()
+				router.push(`/space/${newSpace.slug}/search`);
+					// { forceOptimisticNavigation: true })
+				Router.reload();
+				router.replace(`/space/${newSpace.slug}/search`);
+				router.refresh();
 			}
 		} catch (error) {
 			console.error(error)

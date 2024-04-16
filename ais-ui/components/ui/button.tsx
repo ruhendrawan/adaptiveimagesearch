@@ -20,12 +20,12 @@ const buttonVariants = cva(
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
       },
-      color: {
-        original: "",
-        default: "text-default-foreground hover:bg-default/90",
-        primary: "text-primary-foreground hover:bg-primary/90",
-        secondary: "text-secondary-foreground hover:bg-secondary/80",
-      },
+      // color: {
+      //   original: "",
+      //   default: "text-default-foreground hover:bg-default/90",
+      //   primary: "text-primary-foreground hover:bg-primary/90",
+      //   secondary: "text-secondary-foreground hover:bg-secondary/80",
+      // },
       size: {
         default: "h-10 px-4 py-2",
         sm: "h-9 rounded-md px-3",
@@ -35,7 +35,7 @@ const buttonVariants = cva(
     },
     defaultVariants: {
       variant: "default",
-      color: "original",
+      // color: "original",
       size: "default",
     },
   }

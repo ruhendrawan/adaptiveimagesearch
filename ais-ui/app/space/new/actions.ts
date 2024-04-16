@@ -4,6 +4,7 @@ import slugify from 'slugify';
 import { PrismaClient, Space } from '@prisma/client';
 import { eventLogger } from '@/lib/event-log';
 import { redirect } from 'next/navigation';
+import { revalidatePath } from 'next/cache';
 
 export async function createSpace(name: string) {
     try {
@@ -23,6 +24,7 @@ export async function createSpace(name: string) {
             },
         });
 
+        revalidatePath(`/space`)
         // redirect(`/space/${space.slug}/search`);
         return space;
     } catch (error) {
