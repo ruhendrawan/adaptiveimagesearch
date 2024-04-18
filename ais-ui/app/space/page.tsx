@@ -32,12 +32,9 @@ export default async function SpacesPage() {
 	return (
 		<>
 			<div className="flex flex-col gap-8 items-start">
-				{/* <Input type="text" placeholder="Search ..." variant="faded" size="sm" className="w-96 -mt-4" /> */}
-
 				<h1 className="text-2xl font-bold">Your Spaces</h1>
 				<div className="flex flex-wrap gap-4">
 					<Link href="/space/new" className={buttonVariants({ variant: "primary" })}>New Space</Link>
-					{/* <NewSpaceForm/> */}
 					{spaces.map((space) => (
 						<Link key={space.id} href={`/space/${space.slug}`} className={buttonVariants({ variant: "default" })}>
 							{space.name}

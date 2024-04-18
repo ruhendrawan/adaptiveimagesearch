@@ -2,25 +2,27 @@
 
 import { useState, useEffect } from 'react';
 import { Space, SpaceSearch } from '.prisma/client';
-import { getOrCreateSpaceSearch } from './actions';
-import CarouselGroup from "@/components/carousel-group";
+import { createSpaceSearch, getSpaceSearchKeywords } from './actions';
+import CarouselGroup from "./carousel-group";
 
 
 export default function CarouselQuery(
-    { space }: { space: Space }
+    { space, isNew }: { space: Space, isNew: boolean }
 ) {
     const [topics, setTopics] = useState<string[]>([]);
 
     useEffect(() => {
         async function fetchData() {
-            const [spaceSearch, topics]: [SpaceSearch, string[]] =
-                await getOrCreateSpaceSearch(space);
-            setTopics(topics);
+            let spaceSearch: SpaceSearch = space.SpaceSearch[0];
+            if (isNew) {
+                spaceSearch = await createSpaceSearch(space);
+            }
+            setTopics(await getSpaceSearchKeywords(spaceSearch));
         }
         fetchData();
-    }, [space]);
+    }, [space, isNew]);
 
     return (
-        <CarouselGroup topics={topics}/>
+        <CarouselGroup space={space} topics={topics} />
     )
 }

@@ -1,0 +1,265 @@
+{
+    "Core Attributes": {
+        "Main Subject": {
+            "llm_prompt": "Specify the primary focus of the image {options}",
+            "options": [
+                "landscapes",
+                "people",
+                "animals",
+                "objects",
+                "abstract",
+                "architecture",
+                "food",
+                "nature",
+                "technology",
+                "art"
+            ]
+        },
+        "Color Scheme": {
+            "llm_prompt": "Choose a dominant color palette {options}",
+            "options": [
+                "warm",
+                "cool",
+                "monochrome",
+                "vibrant",
+                "pastel"
+            ]
+        },
+        "Composition": {
+            "llm_prompt": "Specify the framing or layout {options}",
+            "options": [
+                "close-up",
+                "wide-angle",
+                "abstract",
+                "symmetrical",
+                "asymmetrical"
+            ]
+        },
+        "Mood": {
+            "llm_prompt": "Set the desired emotional tone {options}",
+            "options": [
+                "joyful",
+                "serene",
+                "dramatic",
+                "tense",
+                "mysterious"
+            ]
+        },
+        "Time of Day": {
+            "llm_prompt": "Prefer images captured during specific times {options}",
+            "options": [
+                "morning",
+                "midday",
+                "evening",
+                "night"
+            ]
+        }
+    },
+    "Aesthetic Details": {
+        "Secondary Subjects": {
+            "llm_prompt": "Identify additional elements or themes {options}",
+            "options": [
+                "urban settings",
+                "nature",
+                "technology",
+                "historical",
+                "fantasy"
+            ]
+        },
+        "Texture": {
+            "llm_prompt": "Focus on the surface qualities {options}",
+            "options": [
+                "smooth",
+                "rough",
+                "glossy",
+                "matte",
+                "textured"
+            ]
+        },
+        "Lighting Conditions": {
+            "llm_prompt": "Opt for specific lighting types {options}",
+            "options": [
+                "natural",
+                "artificial",
+                "mixed",
+                "dim",
+                "bright"
+            ]
+        },
+        "Historical Period": {
+            "llm_prompt": "Prefer images that evoke a certain era {options}",
+            "options": [
+                "Victorian",
+                "1920s",
+                "medieval",
+                "modern",
+                "futuristic"
+            ]
+        },
+        "Artistic Style": {
+            "llm_prompt": "Choose from styles such as {options}",
+            "options": [
+                "realism",
+                "impressionism",
+                "surrealism",
+                "digital",
+                "abstract"
+            ]
+        }
+    },
+    "Contextual Specifics": {
+        "Specific Details": {
+            "llm_prompt": "Include specific features or objects {options}",
+            "options": [
+                "clouds",
+                "animals",
+                "faces",
+                "vehicles",
+                "floral"
+            ]
+        },
+        "Event": {
+            "llm_prompt": "Focus on particular events or activities {options}",
+            "options": [
+                "festivals",
+                "sports",
+                "ceremonies",
+                "demonstrations",
+                "performances"
+            ]
+        },
+        "Season": {
+            "llm_prompt": "Specify the season depicted in the image {options}",
+            "options": [
+                "spring",
+                "summer",
+                "autumn",
+                "winter"
+            ]
+        },
+        "Location": {
+            "llm_prompt": "Prefer specific locations or settings {options}",
+            "options": [
+                "beach",
+                "mountains",
+                "cities",
+                "forests",
+                "rural"
+            ]
+        },
+        "Perspective": {
+            "llm_prompt": "Choose the angle or viewpoint {options}",
+            "options": [
+                "bird's eye",
+                "ground level",
+                "side view",
+                "frontal",
+                "angled"
+            ]
+        }
+    },
+    "Dynamic Elements": {
+        "Cultural Context": {
+            "llm_prompt": "Include cultural or ethnic elements {options}",
+            "options": [
+                "clothing",
+                "traditions",
+                "symbols",
+                "festivities",
+                "artifacts"
+            ]
+        },
+        "Action": {
+            "llm_prompt": "Focus on actions or dynamics within the image {options}",
+            "options": [
+                "running",
+                "dancing",
+                "interacting",
+                "building",
+                "resting"
+            ]
+        },
+        "Technological Era": {
+            "llm_prompt": "Prefer images reflecting specific technology levels {options}",
+            "options": [
+                "pre-industrial",
+                "industrial",
+                "modern",
+                "digital",
+                "futuristic"
+            ]
+        },
+        "Weather Conditions": {
+            "llm_prompt": "Choose based on weather conditions {options}",
+            "options": [
+                "sunny",
+                "rainy",
+                "foggy",
+                "snowy",
+                "stormy"
+            ]
+        },
+        "Population Density": {
+            "llm_prompt": "Prefer images based on crowd density {options}",
+            "options": [
+                "solitary",
+                "crowded",
+                "moderate",
+                "sparse",
+                "dense"
+            ]
+        }
+    },
+    "Interaction and Impact": {
+        "Age Group": {
+            "llm_prompt": "Focus on specific age groups {options}",
+            "options": [
+                "children",
+                "adults",
+                "elderly",
+                "teenagers",
+                "all ages"
+            ]
+        },
+        "Emotion": {
+            "llm_prompt": "Capture specific emotions {options}",
+            "options": [
+                "happiness",
+                "sadness",
+                "surprise",
+                "anger",
+                "contemplation"
+            ]
+        },
+        "Interaction": {
+            "llm_prompt": "Prefer images depicting certain interactions {options}",
+            "options": [
+                "between people",
+                "with nature",
+                "with animals",
+                "with technology",
+                "in groups"
+            ]
+        },
+        "Technology Usage": {
+            "llm_prompt": "Include images showcasing technology use {options}",
+            "options": [
+                "smartphones",
+                "computers",
+                "industrial machinery",
+                "medical equipment",
+                "agricultural tools"
+            ]
+        },
+        "Natural Elements": {
+            "llm_prompt": "Prefer images with significant natural elements {options}",
+            "options": [
+                "water",
+                "forests",
+                "deserts",
+                "mountains",
+                "fields"
+            ]
+        }
+    }
+}

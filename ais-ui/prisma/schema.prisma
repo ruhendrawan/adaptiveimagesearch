@@ -15,33 +15,55 @@ datasource db {
 }
 
 model Space {
-  id          Int           @id @default(autoincrement())
-  name        String
-  slug        String        @unique
-  session_id  String
-  created_at  DateTime      @default(now())
-  updated_at  DateTime      @updatedAt
-  SpaceSearch SpaceSearch[]
+  id                Int           @id @default(autoincrement())
+  name              String
+  slug              String        @unique
+  session_id        String
+  search_preference Json?
+  created_at        DateTime      @default(now())
+  updated_at        DateTime      @updatedAt
+  SpaceSearch       SpaceSearch[]
+  SpaceCollection   SpaceCollection[]
 
   @@map("spaces")
 }
 
 model SpaceSearch {
-  id             Int      @id @default(autoincrement())
-  space_id       Int // Foreign key linking to Space model
-  search_keyword String   @db.VarChar(255)
-  llm_model      String?  @db.VarChar(255)
-  llm_params     String?  @db.Text
-  llm_prompt     String?  @db.Text
-  llm_response   String?  @db.Text
-  llm_keywords   String?  @db.Text
-  created_at     DateTime @default(now())
-  updated_at     DateTime @updatedAt
+  id                Int      @id @default(autoincrement())
+  space_id          Int // Foreign key linking to Space model
+  search_keyword    String   @db.VarChar(255)
+  search_preference Json?
+  llm_model         String?  @db.VarChar(255)
+  llm_params        String?  @db.Text
+  llm_prompt        String?  @db.Text
+  llm_response      String?  @db.Text
+  llm_keywords      String?  @db.Text
+  created_at        DateTime @default(now())
+  updated_at        DateTime @updatedAt
 
   space Space @relation(fields: [space_id], references: [id])
 
   @@map("space_searches")
 }
+
+model SpaceCollection {
+  id                Int      @id @default(autoincrement())
+  space_id          Int // Foreign key linking to Space model
+  search_keyword    String   @db.VarChar(255)
+  img_cache_url     String?  @db.Text
+  img_url           String?  @db.VarChar(2048)
+  img_url_hash      String?  @db.VarChar(64)
+  img_web_url       String?  @db.Text
+  img_web_html      String?  @db.Text
+  created_at        DateTime @default(now())
+  updated_at        DateTime @updatedAt
+
+  space Space @relation(fields: [space_id], references: [id])
+
+  @@unique([img_url_hash])
+  @@map("space_collections")
+}
+
 
 model Session {
   id         String    @id @db.VarChar(255)

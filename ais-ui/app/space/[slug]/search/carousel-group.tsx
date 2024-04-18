@@ -1,10 +1,11 @@
 "use client"
 
 import React, { useState, useEffect } from 'react';
-// import { revalidatePath } from 'next/cache';
-import Carousel from './carousel';
+import { Space } from '.prisma/client';
+import { addToCollection } from './actions';
+import Carousel from '@/components/carousel';
 
-export default function CarouselGroup({ topics }: { topics: string[] }) {
+export default function CarouselGroup({ space, topics }: { space: Space; topics: string[] }) {
     const [keywordImages, setKeywordImages] = useState<{ [key: string]: any }>({});
     
     useEffect(() => {
@@ -47,12 +48,17 @@ export default function CarouselGroup({ topics }: { topics: string[] }) {
     // server action only
     //     revalidatePath(`/space/${newSpace.slug}/search`);
     }
-    console.log(Object.keys(keywordImages).length)
 
+    async function onSelect(title: string, item: any) {
+        console.log('Selected image:', title, item);
+        await addToCollection(space, item.file, item.origin, title);
+    }
+
+    
     return (
         <>
             {Object.entries(keywordImages).map(([key, value]) => (
-                <Carousel key={key} title={key} items={value || []} />
+                <Carousel key={key} title={key} items={value || []} onSelect={onSelect}/>
             ))}
         </>
     );
