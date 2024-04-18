@@ -46,7 +46,8 @@ export default async function SpacePage(
 						<div key={collection.id}>
 							<div className="w-64 h-40 flex flex-col gap-2 items-center mb-8">
 								<Image
-									src={`/images/${collection.search_keyword}/${collection.img_cache_url}`}
+									// src={`/images/${collection.search_keyword}/${collection.img_cache_url}`}
+									src={`/api/image/${collection.search_keyword}/${collection.img_cache_url}`}
 									alt={collection.img_url || ''}
 									width={400} height={300}
 									className="h-40 w-full object-cover z-0" />

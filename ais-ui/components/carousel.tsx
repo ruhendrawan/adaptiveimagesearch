@@ -23,7 +23,11 @@ export default function Carousel({ title, items, onSelect }: CarouselProps) {
 				{items.data && Array.isArray(items.data.urls) && (items.data.urls.map((item: any) => item.file && (
 					<div key={item.file}>
 						<div className="w-64 h-40 flex flex-col gap-2 items-center">
-							<Image src={`/images/${title}/${item.file}`} alt={item.origin} width={400} height={300} className="h-40 w-full object-cover z-0" />
+							<Image
+								src={`/api/image/${title}/${item.file}`}
+								alt={item.origin}
+								width={400} height={300}
+								className="h-40 w-full object-cover z-0" />
 							<Button size="sm" variant="outline" className="relative -my-12 z-10" onClick={() => onSelect(title, item)}>
 								Select
 							</Button>
