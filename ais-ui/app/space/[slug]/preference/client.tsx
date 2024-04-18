@@ -59,12 +59,12 @@ export function PreferenceClientPage({ slug, preference }: PreferenceClientPageP
 
         const newSpace = await updateSpacePreference({ slug: slug, preference: newSelections })
         if (newSpace) {
-            console.log('Preferences saved successfully!');
+            console.debug('Preferences saved successfully!');
         } else {
             console.error('Failed to save preferences');
         }
 
-        console.log(selections);
+        console.debug(selections);
     };
 
     const handleSubmit = async () => {

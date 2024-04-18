@@ -61,7 +61,7 @@ export default function NewSpaceForm() {
 			if (newSpace && newSpace.slug) {
 				router.push(`/space/${newSpace.slug}`)
 			}
-			console.log(values)
+			console.debug(values)
 		} catch (error) {
 			console.error(error)
 		} finally {

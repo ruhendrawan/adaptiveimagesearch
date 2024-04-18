@@ -14,7 +14,7 @@ class EventLogger {
     try {
       await prisma.$queryRaw
         `INSERT INTO event_logs (session_id, module, event) VALUES (${eventLog.sessionId}, ${eventLog.module}, ${eventLog.event})`;
-      // console.log('Event logged successfully');
+      // console.debug('Event logged successfully');
     } catch (error) {
       // console.error('Error logging event:', error);
     }

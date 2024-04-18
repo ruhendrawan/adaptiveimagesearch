@@ -12,9 +12,9 @@ export default function CarouselGroup({ space, topics }: { space: Space; topics:
         topics.forEach((topic) => {
             const fetchImages = async () => {
                 try {
-                    // console.log(keywordImages);
+                    // console.debug(keywordImages);
                     // if (keywordImages[topic]) return;
-                    // console.log('fetching images for', topic);
+                    // console.debug('fetching images for', topic);
                     setKeywordImages(prevImages => ({
                         ...prevImages,
                         [topic]: {
@@ -50,7 +50,7 @@ export default function CarouselGroup({ space, topics }: { space: Space; topics:
     }
 
     async function onSelect(title: string, item: any) {
-        console.log('Selected image:', title, item);
+        console.debug('Selected image:', title, item);
         await addToCollection(space, item.file, item.origin, title);
     }
 

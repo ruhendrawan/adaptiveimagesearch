@@ -25,7 +25,7 @@ export default async function PreferencePage(
             console.error('Failed to parse preferences:', error);
             return;
         }
-        console.log('Current preferences:', selections);
+        console.debug('Current preferences:', selections);
     }
 
     const preferenceCategories: TPreferenceCategories = preferenceCategoriesJson;
@@ -33,13 +33,13 @@ export default async function PreferencePage(
     // const handleSubmit = async (formData: FormData) => {
     //     "use server"
 
-    //     console.log(formData.get(""));
+    //     console.debug(formData.get(""));
     //     const space =
     //         await updateSpacePreference({
     //             slug: params.slug, preference: selections
     //         })
     //     if (space) {
-    //         console.log('Preferences saved successfully!');
+    //         console.debug('Preferences saved successfully!');
     //     } else {
     //         console.error('Failed to save preferences');
     //     }
@@ -60,7 +60,7 @@ export default async function PreferencePage(
     //         });
     //     });
 
-    //     console.log('New preferences to save:', newSelections);
+    //     console.debug('New preferences to save:', newSelections);
 
     //     try {
     //         const updatedSpace = await updateSpacePreference({
@@ -69,7 +69,7 @@ export default async function PreferencePage(
     //         });
 
     //         if (updatedSpace) {
-    //             console.log('Preferences saved successfully!');
+    //             console.debug('Preferences saved successfully!');
     //             redirect(`/space/${params.slug}`);
     //         } else {
     //             console.error('Failed to save preferences');

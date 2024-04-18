@@ -50,7 +50,7 @@ export async function updateSpacePreference({ slug, preference }: StorePreferenc
 
         revalidatePath(`/space/${space.slug}/preference`);
         return space;
-        console.log('Preferences saved successfully.');
+        console.debug('Preferences saved successfully.');
     } catch (error) {
         console.error('Failed to save preferences:', error);
         throw new Error('Unable to save preferences');

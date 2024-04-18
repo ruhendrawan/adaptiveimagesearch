@@ -110,7 +110,7 @@ export async function addToCollection(
 	space: Space, img_cache_url: string, img_url: string, search_keyword: string
 ): Promise<SpaceCollection> {
 	try {
-		console.log('Adding to collection:', space, img_cache_url, img_url, search_keyword);
+		console.debug('Adding to collection:', space, img_cache_url, img_url, search_keyword);
 		let hash = null;
 		if (img_url) {
 			const { createHash } = require('crypto');

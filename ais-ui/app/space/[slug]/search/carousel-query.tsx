@@ -15,12 +15,20 @@ export default function CarouselQuery(
 
     useEffect(() => {
         async function fetchData() {
-            if (space.SpaceSearch.length > 0) {
-                let spaceSearch: SpaceSearch = space.SpaceSearch[0];
+            // If the search page is empty
+            if (topics.length === 0) {
+                let spaceSearch: SpaceSearch;
+                // Force a new search
                 if (isNew) {
                     spaceSearch = await createSpaceSearch(space);
+                    setTopics(await getSpaceSearchKeywords(spaceSearch));
+                } else {
+                    // or grab the first search from db
+                    if (space.SpaceSearch.length > 0) {
+                        spaceSearch = space.SpaceSearch[0];
+                        setTopics(await getSpaceSearchKeywords(spaceSearch));
+                    }
                 }
-                setTopics(await getSpaceSearchKeywords(spaceSearch));
             }
         }
         fetchData();
