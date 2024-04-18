@@ -6,6 +6,7 @@ import { buttonVariants } from "@/components/ui/button";
 import { getSpaceBySlug } from './actions';
 import CarouselQuery from './carousel-query';
 
+import { SpaceWithSearch } from '@/lib/db-prisma';
 
 type Props = {
 	params: { slug: string }
@@ -18,7 +19,8 @@ export default async function SearchSpacePage(
 ) {
 	const is_new = 'new' in searchParams;
 	const search_id = Number(searchParams['id']);
-	const space = await getSpaceBySlug(params.slug, search_id);
+	const space: SpaceWithSearch = 
+		await getSpaceBySlug(params.slug, search_id);
 	if (space.SpaceSearch.length === 0 && !is_new) {
 		redirect(`/space/${params.slug}/search?new`);
 		return null;

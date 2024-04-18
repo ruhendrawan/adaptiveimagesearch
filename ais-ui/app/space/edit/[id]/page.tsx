@@ -16,9 +16,6 @@ export default function EditSpacePage() {
 				<Link href="/space/1" className={buttonVariants({ variant: "default" })}>View Space</Link>
 			</div>
 
-			<Carusel title="Category 1" items={[{ id: 1 }, { id: 2 }, { id: 3 }]} />
-			<Carusel title="Category 2" items={[{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }]} />
-			<Carusel title="Category 3" items={[{ id: 1 }, { id: 2 }]} />
 		</div>
 	);
 }

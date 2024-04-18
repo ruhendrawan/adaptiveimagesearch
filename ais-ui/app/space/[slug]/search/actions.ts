@@ -2,11 +2,10 @@
 
 import { revalidatePath } from 'next/cache';
 
-import prisma from '@/lib/db-prisma'
+import prisma, { SpaceWithSearch } from '@/lib/db-prisma'
 import { Space, SpaceSearch, SpaceCollection } from '.prisma/client';
 
 import OpenAI from "openai";
-import { get } from 'http';
 
 const openai = new OpenAI({
 	apiKey: process.env.OPENAI_API_KEY,
@@ -76,7 +75,7 @@ export async function createSpaceSearch(space: Space): Promise<SpaceSearch> {
 	}
 }
 
-export async function getSpaceSearchKeywords(spaceSearch: SpaceSearch): string[] {
+export async function getSpaceSearchKeywords(spaceSearch: SpaceSearch): Promise<string[]> {
 	if (!spaceSearch) {
 		return [];
 	}
@@ -87,7 +86,7 @@ export async function getSpaceSearchKeywords(spaceSearch: SpaceSearch): string[]
 	return keywords.slice(0, 5);
 }
 
-export async function getSpaceBySlug(slug: string, search_id?: number): Promise<Space> {
+export async function getSpaceBySlug(slug: string, search_id?: number): Promise<SpaceWithSearch> {
 	try {
 		return await prisma.space.findFirstOrThrow({
 			where: { slug },

@@ -1,6 +1,7 @@
 'use server'
 
-import { PrismaClient, Prisma, Space } from '@prisma/client';
+import { Prisma, Space } from '@prisma/client';
+import prisma from '@/lib/db-prisma';
 import { eventLogger } from '@/lib/event-log';
 import { revalidatePath } from 'next/cache';
 
@@ -15,15 +16,14 @@ interface StorePreferenceParams {
 
 export async function getSpacePreference(slug: string): Promise<Prisma.JsonValue> {
     try {
-        const prisma = new PrismaClient();
+        const space: Space | null =
+            await prisma.space.findFirst({
+                where: {
+                    slug: slug,
+                },
+            });
 
-        const space: Space = await prisma.space.findFirst({
-            where: {
-                slug: slug,
-            },
-        });
-
-        return space.search_preference;
+        return space ? space.search_preference : null;
     } catch (error) {
         console.error('Failed to fetch preferences:', error);
         throw new Error('Unable to fetch preferences');
@@ -37,7 +37,6 @@ export async function updateSpacePreference({ slug, preference }: StorePreferenc
             module: 'space.preference',
             event: slug
         });
-        const prisma = new PrismaClient();
 
         const space: Space = await prisma.space.update({
             where: {

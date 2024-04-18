@@ -14,7 +14,7 @@ export default function CarouselGroup({ space, topics }: { space: Space; topics:
                 try {
                     // console.log(keywordImages);
                     // if (keywordImages[topic]) return;
-                    console.log('fetching images for', topic);
+                    // console.log('fetching images for', topic);
                     setKeywordImages(prevImages => ({
                         ...prevImages,
                         [topic]: {
