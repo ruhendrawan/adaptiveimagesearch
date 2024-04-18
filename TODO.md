@@ -12,3 +12,6 @@ Multi-agent LLM
 - [ ] Potential relationship between keywords
 - [ ] Multiple description / elaboration of keywords -- make meaning of the image -- selectable eventhough there is no avaiable images
 - [ ]
+
+Server
+- [ ] Docker file to setup the project
