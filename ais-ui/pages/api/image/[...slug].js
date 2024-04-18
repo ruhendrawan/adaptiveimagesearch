@@ -12,7 +12,7 @@ export default function handler(req, res) {
         try {
             const fileUrl = req.query.slug.join("/")
             const filePath = path.join(process.cwd(), 'public/images', fileUrl);
-            console.log(filePath);
+            // console.log(filePath);
             fs.readFile(filePath, (err, data) => {
                 if (err) {
                     if (err.code === 'ENOENT') {
