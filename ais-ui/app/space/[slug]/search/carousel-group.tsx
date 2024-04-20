@@ -7,7 +7,7 @@ import Carousel from '@/components/carousel';
 
 export default function CarouselGroup({ space, topics }: { space: Space; topics: string[] }) {
     const [keywordImages, setKeywordImages] = useState<{ [key: string]: any }>({});
-    
+
     useEffect(() => {
         topics.forEach((topic) => {
             const fetchImages = async () => {
@@ -20,8 +20,11 @@ export default function CarouselGroup({ space, topics }: { space: Space; topics:
                         [topic]: {
                             isLoading: true
                         }
-                    }));            
-                    const response = await fetch('http://0.0.0.0:8000/download_images/', {
+                    }));
+                    let domain = window.location.origin;
+                    let port = 8000;
+                    let image_search_api = `${domain}:${port}/download_images/`;
+                    const response = await fetch(image_search_api, {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({ query: topic, limit: 5 })
@@ -33,7 +36,7 @@ export default function CarouselGroup({ space, topics }: { space: Space; topics:
                             isLoading: false,
                             data: images
                         }
-                    }));            
+                    }));
                 } catch (error) {
                     console.error('Failed to fetch images for', topic, error);
                 }
@@ -44,9 +47,9 @@ export default function CarouselGroup({ space, topics }: { space: Space; topics:
 
     if (Object.keys(keywordImages).length === 0) {
         return <div>Loading...</div>;
-    // } else {
-    // server action only
-    //     revalidatePath(`/space/${newSpace.slug}/search`);
+        // } else {
+        // server action only
+        //     revalidatePath(`/space/${newSpace.slug}/search`);
     }
 
     async function onSelect(title: string, item: any) {
@@ -54,11 +57,11 @@ export default function CarouselGroup({ space, topics }: { space: Space; topics:
         await addToCollection(space, item.file, item.origin, title);
     }
 
-    
+
     return (
         <>
             {Object.entries(keywordImages).map(([key, value]) => (
-                <Carousel key={key} title={key} items={value || []} onSelect={onSelect}/>
+                <Carousel key={key} title={key} items={value || []} onSelect={onSelect} />
             ))}
         </>
     );
