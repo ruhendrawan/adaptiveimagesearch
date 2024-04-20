@@ -5,6 +5,21 @@ import { Space } from '.prisma/client';
 import { addToCollection } from './actions';
 import Carousel from '@/components/carousel';
 
+
+async function searchImages(topic: string): Promise<any> {
+    let port = 8000;
+    let image_search_api =
+        window.location.protocol + '//' +
+        window.location.hostname + ':' + port +
+        '/download_images/';
+    const response = await fetch(image_search_api, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ query: topic, limit: 5 })
+    });
+    return await response.json();
+}
+
 export default function CarouselGroup({ space, topics }: { space: Space; topics: string[] }) {
     const [keywordImages, setKeywordImages] = useState<{ [key: string]: any }>({});
 
@@ -21,15 +36,7 @@ export default function CarouselGroup({ space, topics }: { space: Space; topics:
                             isLoading: true
                         }
                     }));
-                    let domain = window.location.origin;
-                    let port = 8000;
-                    let image_search_api = `${domain}:${port}/download_images/`;
-                    const response = await fetch(image_search_api, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ query: topic, limit: 5 })
-                    });
-                    const images = await response.json();
+                    const images = await searchImages(topic);
                     setKeywordImages(prevImages => ({
                         ...prevImages,
                         [topic]: {
